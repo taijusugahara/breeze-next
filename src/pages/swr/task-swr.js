@@ -6,13 +6,22 @@ export default function TaskSwr() {
     const [cnt, setCnt] = useState(1)
     const pages = []
     const max_num = 100
+    const [num, setNum] = useState(0)
     let isMoreLoad = true
 
     for (let i = 0; i < cnt; i++) {
         const start_num = i * 10
         const end_num = start_num + 10
         console.log(end_num)
-        pages.push(<Page index={i} start_num={start_num} key={i} />)
+        pages.push(
+            <Page
+                index={i}
+                start_num={start_num}
+                num={num}
+                setNum={setNum}
+                key={i}
+            />,
+        )
         if (end_num >= max_num) {
             isMoreLoad = false
         }
@@ -22,6 +31,8 @@ export default function TaskSwr() {
     return (
         <div>
             task-swr
+            <br />
+            num:{num}
             <br />
             <Link href="/swr/task-swr-infinite">task-swr-infinite</Link>
             <br />
